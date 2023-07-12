@@ -1,0 +1,38 @@
+"jest": {
+    "moduleFileExtensions": [
+      "js",
+      "vue"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1",
+      "^ical.js": "<rootDir>/node_modules/ical.js"
+    },
+    "transform": {
+      ".*\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/node_modules/@vue/vue2-jest"
+    },
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/jest-serializer-vue"
+    ],
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.{js,vue}",
+      "!**/node_modules/**"
+    ],
+    "coverageReporters": [
+      "json",
+      "text",
+      "html",
+      "lcov",
+      "clover"
+    ],
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(@fullcalendar|uuid)).+\\.js$"
+    ],
+    "setupFilesAfterEnv": [
+      "./tests/javascript/jest.setup.js",
+      "./tests/assets/loadAsset.js"
+    ],
+    "testEnvironment": "jsdom"
+  }
