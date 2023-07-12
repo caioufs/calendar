@@ -2,7 +2,7 @@ import { getDefaultCalendarShareObject } from '../src/models/calendarShare'
 
 describe("Funcao 09", () => {
     it('Deve retornar um objeto de calendario com campos preenchidos', () => {
-        const newCalendarData = { id: 'idTeste', prop: 'Propriedade Teste' }
+        const newCalendarData = { id: 'idTeste', prop: 'Propriedade Teste', newProp: "teste" }
         const newCalendar = getDefaultCalendarShareObject(newCalendarData)
 
 		expect(newCalendar).toEqual({
@@ -14,6 +14,7 @@ describe("Funcao 09", () => {
 			isCircle: false,
 			uri: null,
 			prop: 'Propriedade Teste',
+			newProp: "teste"
         })
 	})
 })

@@ -1,18 +1,12 @@
-import { getDefaultAttendeeObject } from '../src/models/attendee'
+import closestColor from '../src/utils/closestColor'
 
-describe("Funcao 07", () => {
-    it('Deve retornar um participante em estado default (Vazio)', () => {
-        const participante = getDefaultAttendeeObject()
-        const participanteVazio = {
-            attendeeProperty: null,
-			commonName: null,
-			calendarUserType: 'INDIVIDUAL',
-			participationStatus: 'NEEDS-ACTION',
-			role: 'REQ-PARTICIPANT',
-			rsvp: false,
-			uri: null,
-        }
+describe("Funcao 07, utils/closestColor", () => {
+    it('Deve retornar uma cor conhecida mais proxima do valor Hex fornecido', () => {
+		const blue = '#00f'
+		const yellow = '#ff2'
 
-		expect(participante).toEqual(participanteVazio)
+
+		expect(closestColor(blue, { detailed: true })).toEqual({ name: 'blue', hex: "#0000ff" })
+		expect(closestColor(yellow, { detailed: true })).toEqual({ name: 'yellow', hex: "#ffff00" })
 	})
 })
