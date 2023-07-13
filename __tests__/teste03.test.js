@@ -1,24 +1,28 @@
 import { hexToRGB, detectColor } from '../src/utils/color'
 
 describe("Funcao 03, utils/color", () => {
+    const shortHex = "#0F0"
+    const fullHex = "#00FF00"
+    const nullable = null
+    const empty = ""
 
-    it("Deve transformar uma cor Hexadecimal para Valores RGB", () => {
-        const whiteHex = "#FFF"
-        const blackHex = ""
-        
-        expect(hexToRGB(whiteHex)).toEqual({ red: 255, green: 255, blue: 255 })
-        expect(hexToRGB(blackHex)).toEqual({ red: 0, green: 0, blue: 0 })
+    it("Deve transformar uma cor Hexadecimal para Valores RGB", () => {        
+        const rgbWhite = { red: 0, green: 0, blue: 0 }
+        const rgbGreen = { red: 0, green: 255, blue: 0 };
+
+        expect(hexToRGB(shortHex)).toEqual(rgbGreen)
+        expect(hexToRGB(fullHex)).toEqual(rgbGreen)
+        expect(hexToRGB(nullable)).toEqual(rgbWhite)
+        expect(hexToRGB(empty)).toEqual(rgbWhite)
     })
 
-    it("Verifica se o valor passado é uma cor valida (Hexadecimal)", () => {
-        const color1 = ""
-        const color2 = "#f00"
-        const color3 = "f00"
-        const color4 = "HHH"
+    it("Retorna a cor Hexadecimal caso seja válida, ou false caso não seja", () => {
+        const invalidHex = "#SSFF00"
 
-        expect(detectColor(color1)).toBe(false)
-        expect(detectColor(color2)).toEqual(color2)
-        expect(detectColor(color3)).toEqual(`#${color3}`)
-        expect(detectColor(color4)).toEqual(false)
+        expect(detectColor(shortHex)).toBe(shortHex)
+        expect(detectColor(fullHex)).toEqual(fullHex)
+        expect(detectColor(invalidHex)).toEqual(false)
+        expect(detectColor(nullable)).toEqual(false)
+        expect(detectColor(empty)).toEqual(false)
     })
 })
