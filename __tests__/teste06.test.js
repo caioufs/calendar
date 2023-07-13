@@ -1,4 +1,4 @@
-import { getColorForFBType } from './mock/freebusyMock'
+import { getColorForFBType } from '../src/mock/freebusyMock'
 
 describe("Funcao 06, utils/freebusy", () => {
 
