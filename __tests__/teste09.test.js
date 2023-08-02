@@ -2,19 +2,39 @@ import { getDefaultCalendarShareObject } from '../src/models/calendarShare'
 
 describe("Funcao 09", () => {
     it('Deve retornar um objeto de calendario com campos preenchidos', () => {
-        const newCalendarData = { id: 'idTeste', prop: 'Propriedade Teste', newProp: "teste" }
-        const newCalendar = getDefaultCalendarShareObject(newCalendarData)
+        const newCalendarNullId = {}
+		const newCalendarWithId = { id: '123'}
+		const newCalendarExtraProp = { id: '123', stringProp: 'type string', numProp: 12, boolProp: true}
 
-		expect(newCalendar).toEqual({
-            id: 'idTeste',
+		expect(getDefaultCalendarShareObject(newCalendarNullId)).toEqual({
+			id: null,
 			displayName: null,
 			writeable: false,
 			isUser: false,
 			isGroup: false,
 			isCircle: false,
 			uri: null,
-			prop: 'Propriedade Teste',
-			newProp: "teste"
+        })
+		expect(getDefaultCalendarShareObject(newCalendarWithId)).toEqual({
+			id: '123',
+			displayName: null,
+			writeable: false,
+			isUser: false,
+			isGroup: false,
+			isCircle: false,
+			uri: null,
+        })
+		expect(getDefaultCalendarShareObject(newCalendarExtraProp)).toEqual({
+			id: '123',
+			displayName: null,
+			writeable: false,
+			isUser: false,
+			isGroup: false,
+			isCircle: false,
+			uri: null,
+			stringProp: 'type string',
+			numProp: 12,
+			boolProp: true
         })
 	})
 })
